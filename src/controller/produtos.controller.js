@@ -56,10 +56,10 @@ class ProdutosControllers {
   }
 
   //delete - pegar o id, e depois utilizar na function de deletar do service
-  async deletarProduto({ id }) {
-    const id = req.params.id;
+  async deletarProduto(req, res) {
+    const newId = req.params.id;
 
-    const produto = await ProdutosServices.deletarProduto(id);
+    const produto = await ProdutosServices.deletarProduto(newId);
     res.status(200).send("Produto deletado com sucesso!");
   }
 }

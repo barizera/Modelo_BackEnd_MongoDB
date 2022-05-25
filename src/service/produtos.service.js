@@ -44,7 +44,7 @@ class ProdutosServices {
 
   async excluirProduto({ id }) {
     //buscar e deletar o produto pelo id passado.
-    const produto = Produtos.findByIdAndDelete(id);
+    const produto = await Produtos.findByIdAndDelete(id);
     return produto;
   }
 }

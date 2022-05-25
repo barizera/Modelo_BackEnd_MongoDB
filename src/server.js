@@ -1,5 +1,5 @@
 import app from "./app.js";
-import { conectarAoDatabase } from "./database.js";
+import { conectarAoDatabase } from "./database/index.js";
 
 const port = 3000;
 

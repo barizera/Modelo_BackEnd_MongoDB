@@ -1,4 +1,4 @@
-import  produtosRoute from "./route/produtos.routes.js";
+import  produtosRoute from "./routes/produtos.routes.js";
 import express from "express";
 import cors from "cors";
 
@@ -11,6 +11,6 @@ app.get("/", (req, res) => {
   return res.send("Olá dev");
 });
 
-app.use("/produto", produtosRoute);
+app.use("/produtos", produtosRoute);
 
 export default app;
