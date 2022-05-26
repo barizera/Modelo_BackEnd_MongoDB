@@ -5,10 +5,10 @@ import ProdutosControllers from "../controller/produtos.controller.js";
 const route = Router();
 const produtosControllers = new ProdutosControllers();
 //mesmo o listarTodosProdutos sendo function, não podemos utilizar os () ao fim dela.
-route.get("/getAll", produtosControllers.listarTodosProdutos);
-route.get("/getById/:id", produtosControllers.listarProdutoPorId);
+route.get("/get-all", produtosControllers.listarTodosProdutos);
+route.get("/get-by-id/:id", produtosControllers.listarProdutoPorId);
 route.post("/create", produtosControllers.criarNovoProduto);
 route.put("/update/:id", produtosControllers.atualizarProduto);
-route.delete("/delete/:id", produtosControllers.deletarProduto);
+route.delete("/delete/:id", produtosControllers.excluirProduto);
 
 export default route;

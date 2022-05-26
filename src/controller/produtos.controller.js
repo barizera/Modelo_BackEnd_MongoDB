@@ -45,7 +45,7 @@ class ProdutosControllers {
     // recebendo o id para poder acessar onde vamos atualizar.
     const id = req.params.id;
     // criando o objeto que vai receber os dados que vieram do req.body.
-    const produtoAtualizado = await ProdutosServices.atualizarProduto({
+    const produtoAtualizado = await produtosServices.atualizarProduto({
       nome,
       descricao,
       foto,
@@ -56,10 +56,10 @@ class ProdutosControllers {
   }
 
   //delete - pegar o id, e depois utilizar na function de deletar do service
-  async deletarProduto(req, res) {
-    const newId = req.params.id;
+  async excluirProduto(req, res) {
+    const idDeletar = req.params.id;
 
-    const produto = await ProdutosServices.deletarProduto(newId);
+    const produto = await produtosServices.excluirProduto(idDeletar);
     res.status(200).send("Produto deletado com sucesso!");
   }
 }

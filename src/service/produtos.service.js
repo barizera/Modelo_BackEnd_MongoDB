@@ -2,12 +2,12 @@ import Produtos from "../model/produtos.model.js";
 
 class ProdutosServices {
   async listarTodosProdutos() {
-    const protudos = await Produtos.find();
+    const produtos = await Produtos.find();
 
-    return Produtos;
+    return produtos;
   }
 
-  async listarProdutosPorId() {
+  async listarProdutosPorId({ id }) {
     const protudoSelecionado = await Produtos.findById(id).exec();
 
     return protudoSelecionado;
