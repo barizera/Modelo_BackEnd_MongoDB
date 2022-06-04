@@ -25,42 +25,51 @@ class ProdutosControllers {
     res.send(produtoSelecionado);
   }
 
-  //create
-  //no create, precisamos passar os dados que vieram da req, para guardar na variável que vamos criar para fazer o create.
   async criarNovoProduto(req, res) {
     const { nome, descricao, foto } = req.body;
-    //variavel que vai guardar os dados para enviar o novo produto através do service.funçãoDeCriarProduto
-    const novoProduto = await produtosServices.criarNovoProduto({
-      nome,
-      descricao,
-      foto,
-    });
 
-    res.status(201).send(novoProduto);
+    try {
+      const novoProduto = await produtosServices.criarNovoProduto({
+        nome,
+        descricao,
+        foto,
+      });
+      res.status(201).send(novoProduto);
+    } catch (error) {
+      if (error.code === 11000) {
+        res.status(400).send("Empreendimento já cadastrado.");
+      }
+    }
   }
-  //Update - quase mesma idéia do create, porém no update, a gente tem que criar a variável para ler o id, e passar no produto atualizado
+
   async atualizarProduto(req, res) {
-    // desconstruindo o objeto para buscar as requisições do body, semprecisar criar 3 querys.
     const { nome, descricao, foto } = req.body;
-    // recebendo o id para poder acessar onde vamos atualizar.
-    const id = req.params.id;
-    // criando o objeto que vai receber os dados que vieram do req.body.
-    const produtoAtualizado = await produtosServices.atualizarProduto({
-      nome,
-      descricao,
-      foto,
-      id,
-    });
 
-    res.send(produtoAtualizado);
+    const id = req.params.id;
+
+    try {
+      const produtoAtualizado = await produtosServices.atualizarProduto({
+        nome,
+        descricao,
+        foto,
+        id,
+      });
+
+      res.send(produtoAtualizado);
+    } catch (error) {
+      if (error.code === 11000) {
+        res.status(400).send("Empreendimento já cadastrado.");
+      }
+    }
   }
 
-  //delete - pegar o id, e depois utilizar na function de deletar do service
+  
   async excluirProduto(req, res) {
-    const idDeletar = req.params.id;
+    const id = req.params.id;
 
-    const produto = await produtosServices.excluirProduto(idDeletar);
-    res.status(200).send("Produto deletado com sucesso!");
+    const produto = await produtosServices.excluirProduto({ id });
+
+    res.status(200).send(produto);
   }
 }
 

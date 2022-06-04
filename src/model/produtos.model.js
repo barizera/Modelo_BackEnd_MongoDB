@@ -11,6 +11,6 @@ const ProdutosSchema = new Schema(
   { versionKey: false }
 );
 
-const Produtos = model("produtosCollection", ProdutosSchema);
+const Produtos = model("produtoscollection", ProdutosSchema);
 
 export default Produtos;

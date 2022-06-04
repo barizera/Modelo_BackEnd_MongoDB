@@ -1,7 +1,7 @@
 import app from "./app.js";
 import { conectarAoDatabase } from "./database/index.js";
 
-const port = 3000;
+const port = 3001;
 
 app.listen(port, () => {
   conectarAoDatabase();

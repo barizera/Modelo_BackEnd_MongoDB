@@ -8,7 +8,7 @@ class ProdutosServices {
   }
 
   async listarProdutosPorId({ id }) {
-    const protudoSelecionado = await Produtos.findById(id).exec();
+    const protudoSelecionado = await Produtos.findById(id);
 
     return protudoSelecionado;
   }
